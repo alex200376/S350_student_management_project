@@ -32,12 +32,14 @@ if (!isset($_SESSION['username'])) {
       float: right;
       padding-right: 50px;
     }
-    aside li{
+
+    aside li {
       margin-top: 30px;
       margin-left: 20px;
       text-decoration: none;
-      
+
     }
+
     ul {
       background-color: ;
     }
