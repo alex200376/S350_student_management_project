@@ -26,36 +26,54 @@ if (!isset($_SESSION['username'])) {
 
     a {
       text-decoration: none;
+      color: white;
+      font-weight: 800;
     }
 
     .logout {
       float: right;
       padding-right: 50px;
+
+      background-color: #skyblue;
     }
 
     aside li {
-      margin-top: 30px;
-      margin-left: 20px;
+      padding: 20px;
       text-decoration: none;
 
+      list-style: none;
+      font-size: 15px;
+    }
+
+    aside li a:hover {
+      color: lightblue;
     }
 
     ul {
-      background-color: ;
+      background-color: grey;
+      width: 18%;
+      height: 100%;
+      text-align: center;
+      position: fixed;
+
+    }
+    .content{
+      margin-left:20%;
+      margin-top: 5%;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <a href="">admin dashboard</a>
+    <a href="admin.php">admin dashboard</a>
     <div class="logout">
       <a href="index.php">logout</a>
     </div>
   </header>
   <aside>
     <ul>
-      <li><a href="">add student</a></li>
+      <li><a href="add_student.php">add student</a></li>
       <li><a href="">view student</a></li>
       <li><a href="">add teacher</a></li>
       <li><a href="">view teacher</a></li>
@@ -63,13 +81,11 @@ if (!isset($_SESSION['username'])) {
       <li><a href="">view course</a></li>
     </ul>
   </aside>
+     <div class="content">
+        <h1>Hello</h1>
 
+     </div>
 
-
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-
-  </footer>
 
 
 
