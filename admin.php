@@ -57,8 +57,9 @@ if (!isset($_SESSION['username'])) {
       position: fixed;
 
     }
-    .content{
-      margin-left:20%;
+
+    .content {
+      margin-left: 20%;
       margin-top: 5%;
     }
   </style>
@@ -74,17 +75,17 @@ if (!isset($_SESSION['username'])) {
   <aside>
     <ul>
       <li><a href="add_student.php">add student</a></li>
-      <li><a href="">view student</a></li>
-      <li><a href="">add teacher</a></li>
-      <li><a href="">view teacher</a></li>
-      <li><a href="">add course</a></li>
-      <li><a href="">view course</a></li>
+      <li><a href="view_student.php">view student</a></li>
+      <li><a href="add_teacher.php">add teacher</a></li>
+      <li><a href="view_teacher.php">view teacher</a></li>
+      <li><a href="add_course.php">add course</a></li>
+      <li><a href="view_course.php">view course</a></li>
     </ul>
   </aside>
-     <div class="content">
-        <h1>Hello</h1>
+  <div class="content">
+    <h1>Hello</h1>
 
-     </div>
+  </div>
 
 
 

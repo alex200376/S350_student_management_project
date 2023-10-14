@@ -11,12 +11,12 @@ $password = "";
 $db = "school";
 $data = mysqli_connect($host, $user, $password, $db);
 
-if (isset($_POST['add_student'])) {
+if (isset($_POST['add_teacher'])) {
     $username = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
-    $usertype = "student";
+    $usertype = "teacher";
     $check = "SELECT * FROM user WHERE username ='$username'";
 
     $check_user = mysqli_query($data, $check);
@@ -166,7 +166,7 @@ if (isset($_POST['add_student'])) {
     </aside>
     <center>
         <div class="content">
-            <h1>Add student</h1>
+            <h1>Add teacher</h1>
             <div class="div_deg">
                 <form action="#" method="POST">
                     <div>
@@ -187,7 +187,7 @@ if (isset($_POST['add_student'])) {
                     </div>
                     <div>
 
-                        <input type="submit" class="btn" name="add_student" value="Add">
+                        <input type="submit" class="btn" name="add_teacher" value="Add">
                     </div>
 
             </div>
