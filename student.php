@@ -73,8 +73,8 @@ if (!isset($_SESSION['username'])) {
   </header>
   <aside>
     <ul>
-      <li><a href="">add student</a></li>
-      <li><a href="">view student</a></li>
+      <li><a href="">Update my info</a></li>
+      <li><a href="">view my score</a></li>
  
   </aside>
      <div class="content">

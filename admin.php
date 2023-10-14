@@ -73,7 +73,7 @@ if (!isset($_SESSION['username'])) {
       background-color: white;
       white-space: nowrap;
       display: inline-block;
-     
+
     }
 
     .dashboard-content li {
@@ -81,12 +81,35 @@ if (!isset($_SESSION['username'])) {
       font-size: 20px;
       padding: 5px;
       width: auto;
-      
+
     }
 
     h1 {
       margin-top: -20px;
       margin-bottom: 10px;
+    }
+
+    ul.nice-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.nice-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    ul.nice-list li:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      background-color: #3498db;
+      border-radius: 50%;
     }
   </style>
 </head>
@@ -104,23 +127,21 @@ if (!isset($_SESSION['username'])) {
       <li><a href="view_student.php">view student</a></li>
       <li><a href="add_teacher.php">add teacher</a></li>
       <li><a href="view_teacher.php">view teacher</a></li>
-      <li><a href="add_course.php">add course</a></li>
-      <li><a href="view_course.php">view course</a></li>
     </ul>
   </aside>
   <div class="content">
     <div class="dashboard-content">
       <h1>Welcome to the Admin Dashboard</h1>
-      <ul>
+      <ul class="nice-list">
         <li>Effortlessly manage your system with our intuitive admin dashboard.</li>
         <li>Add and view teacher records:</li>
-        
-          <li>Track teacher details like name, contact information, and subject expertise.</li>
-        
+
+        <li>Track teacher details like name, contact information, and subject expertise.</li>
+
         <li>Manage student records:</li>
-        
-          <li>Keep track of student information, including name, <p>grade level, and contact details.</li>
-        
+
+        <li>Keep track of student information, including name, <p>grade level, and contact details.</li>
+
         <li>Stay organized and ensure accurate data management for your educational institution.</li>
       </ul>
     </div>

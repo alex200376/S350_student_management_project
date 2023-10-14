@@ -16,6 +16,8 @@ if (isset($_POST['add_student'])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
+    $Course = $_POST['course'];
+    $gpa = $_POST['gpa'];
     $usertype = "student";
     $check = "SELECT * FROM user WHERE username ='$username'";
 
@@ -29,8 +31,8 @@ if (isset($_POST['add_student'])) {
     </script>";
     } else {
 
-        $sql = "INSERT INTO user(username,email,phone,usertype,password) VALUES('$username',
-    '$email','$phone','$usertype','$password')";
+        $sql = "INSERT INTO user(username,email,phone,usertype,password,Course,gpa) VALUES('$username',
+    '$email','$phone','$usertype','$password','$Course','$gpa')";
         $result = mysqli_query($data, $sql);
         if ($result) {
             echo "<script>
@@ -140,9 +142,39 @@ if (isset($_POST['add_student'])) {
         }
 
         .div_deg {
-            background-color: lightskyblue;
+            background-color: #3498db;
+            color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             width: 400px;
-            padding: 20px;
+            padding: 15px;
+        }
+
+        label {
+            text-align: center;
+        }
+
+        .div_deg input[type="text"],
+        .div_deg input[type="number"],
+        .div_deg input[type="email"],
+        .div_deg input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .div_deg input[type="text"]:focus,
+        .div_deg input[type="number"]:focus,
+        .div_deg input[type="email"]:focus,
+        .div_deg input[type="password"]:focus {
+            outline: none;
+            box-shadow: 0 0 5px #3498db;
+        }
+        select{
+            width: 90%;
+            height: 30px;
         }
     </style>
 </head>
@@ -160,8 +192,6 @@ if (isset($_POST['add_student'])) {
             <li><a href="view_student.php">view student</a></li>
             <li><a href="add_teacher.php">add teacher</a></li>
             <li><a href="view_teacher.php">view teacher</a></li>
-            <li><a href="add_course.php">add course</a></li>
-            <li><a href="view_course.php">view course</a></li>
         </ul>
     </aside>
     <center>
@@ -184,6 +214,19 @@ if (isset($_POST['add_student'])) {
                     <div>
                         <label>Password</label>
                         <input type="text" name="password" required>
+                    </div>
+                    <div>
+                        <label>Course</label>
+                        <select name="course">
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Security">Information Security</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="AI engineer">AI engineer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>GPA</label>
+                        <input type="number" step="any" name="gpa" required>
                     </div>
                     <div>
 
