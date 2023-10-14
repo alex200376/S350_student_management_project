@@ -159,6 +159,8 @@ if ($_GET['student_id']) {
             <li><a href="view_student.php">view student</a></li>
             <li><a href="add_teacher.php">add teacher</a></li>
             <li><a href="view_teacher.php">view teacher</a></li>
+            <li><a href="add_course.php">add course</a></li>
+            <li><a href="view_course.php">view course</a></li>
         </ul>
     </aside>
     <div class="content">
@@ -171,7 +173,7 @@ if ($_GET['student_id']) {
                     <th>Phone number</th>
                     <th>Password</th>
                     <th>Course</th>
-                    <th>GPA</th>
+                    <th>CGPA</th>
                     <th>Delete</th>
                 </tr>
                 <?php
@@ -195,7 +197,7 @@ if ($_GET['student_id']) {
                             <?php echo "{$info['Course']}"; ?>
                         </td>
                         <td>
-                            <?php echo "{$info['gpa']}"; ?>
+                            <?php echo "{$info['cgpa']}"; ?>
                         </td>
                         <td>
                             <?php

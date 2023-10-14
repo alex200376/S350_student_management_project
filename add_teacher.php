@@ -11,6 +11,9 @@ $password = "";
 $db = "school";
 $data = mysqli_connect($host, $user, $password, $db);
 
+$sql = "SELECT * FROM courses where id IS NOT NULL";
+$result = mysqli_query($data, $sql);
+
 if (isset($_POST['add_teacher'])) {
     $username = $_POST['name'];
     $email = $_POST['email'];
@@ -147,20 +150,22 @@ if (isset($_POST['add_teacher'])) {
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             width: 400px;
-         
         }
-        label{
+        label {
             text-align: center;
-         }
+        }
+
         .div_deg input[type="text"],
         .div_deg input[type="number"],
         .div_deg input[type="email"],
-        .div_deg input[type="password"] {
-            width: 90%;
-            padding: 10px;
+        .div_deg input[type="password"]
+         {
+            width:50%;
+            padding: 5px;
             border: none;
             border-radius: 5px;
             margin-bottom: 10px;
+           
         }
 
         .div_deg input[type="text"]:focus,
@@ -170,9 +175,12 @@ if (isset($_POST['add_teacher'])) {
             outline: none;
             box-shadow: 0 0 5px #3498db;
         }
-        select{
-            width: 90%;
-            height: 30px;
+
+        .div_deg select{
+            width: 60%;
+            height: 40px;
+            border-radius: 5px;
+            margin: 20px;
         }
         
     </style>
@@ -191,7 +199,8 @@ if (isset($_POST['add_teacher'])) {
             <li><a href="view_student.php">view student</a></li>
             <li><a href="add_teacher.php">add teacher</a></li>
             <li><a href="view_teacher.php">view teacher</a></li>
-    
+            <li><a href="add_course.php">add course</a></li>
+            <li><a href="view_course.php">view course</a></li>
         </ul>
     </aside>
     <center>
@@ -218,10 +227,11 @@ if (isset($_POST['add_teacher'])) {
                     <div>
                         <label>Course</label>
                         <select name="course">
-                            <option value="Computer Science">Computer Science</option>
-                            <option value="Information Security">Information Security</option>
-                            <option value="Data Science">Data Science</option>
-                            <option value="AI engineer">AI engineer</option>
+                        <?php
+                              while ($course = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $course['name'] . '">' . $course['name'] . '</option>';
+                            }
+                            ?>
                         </select>
                     </div>
                     <div>

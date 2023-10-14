@@ -127,6 +127,8 @@ if (!isset($_SESSION['username'])) {
       <li><a href="view_student.php">view student</a></li>
       <li><a href="add_teacher.php">add teacher</a></li>
       <li><a href="view_teacher.php">view teacher</a></li>
+      <li><a href="add_course.php">add course</a></li>
+      <li><a href="view_course.php">view course</a></li>
     </ul>
   </aside>
   <div class="content">

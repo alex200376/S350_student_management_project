@@ -10,18 +10,17 @@ $user = "root";
 $password = "";
 $db = "school";
 $data = mysqli_connect($host, $user, $password, $db);
-
-$sql = "SELECT * FROM user where usertype='teacher'";
+$sql = "SELECT * FROM courses where id IS NOT NULL";
 $result = mysqli_query($data, $sql);
 
-if ($_GET['teacher_id']) {
-    $t_id = $_GET['teacher_id'];
-    $sql2 = "DELETE FROM user WHERE id='$t_id'";
+if ($_GET['course_id']) {
+    $c_id = $_GET['course_id'];
+    $sql2 = "DELETE FROM courses WHERE id='$c_id'";
     $result2 = mysqli_query($data, $sql2);
 
     if ($result2) {
         echo
-        header("Location:view_teacher.php");
+        header("Location:view_course.php");
     }
 }
 ?>
@@ -120,6 +119,7 @@ if ($_GET['teacher_id']) {
             font-family: sans-serif;
             min-width: 400px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+           
         }
 
         .table tr {
@@ -166,14 +166,11 @@ if ($_GET['teacher_id']) {
     </aside>
     <div class="content">
         <center>
-            <h1>View teacher</h1>
+            <h1>View Courses</h1>
             <table class="table">
                 <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Phone number</th>
-                    <th>Password</th>
-                    <th>Course</th>
+                    <th>Course ID</th>
+                    <th>Course name</th>
                     <th>Delete</th>
                 </tr>
                 <?php
@@ -182,24 +179,15 @@ if ($_GET['teacher_id']) {
                 ?>
                     <tr>
                         <td>
-                            <?php echo "{$info['username']}"; ?>
+                            <?php echo "{$info['id']}"; ?>
                         </td>
                         <td>
-                            <?php echo "{$info['email']}"; ?>
-                        </td>
-                        <td>
-                            <?php echo "{$info['phone']}"; ?>
-                        </td>
-                        <td>
-                            <?php echo "{$info['password']}"; ?>
-                        </td>
-                        <td>
-                            <?php echo "{$info['Course']}"; ?>
+                            <?php echo "{$info['name']}"; ?>
                         </td>
                         <td>
                             <?php
                             echo "
-                       <a onClick=\"javascript:return confirm('Are you sure to delete this?');\" href='view_teacher.php?teacher_id={$info['id']}' class='btn'>Delete</a>"
+                       <a onClick=\"javascript:return confirm('Are you sure to delete this?');\" href='view_course.php?course_id={$info['id']}' class='btn'>Delete</a>"
 
                             ?>
                         </td>

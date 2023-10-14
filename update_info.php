@@ -107,23 +107,7 @@ $result = mysqli_query($data, $sql);
 
   </aside>
   <div class="content">
-    <div class="para">
-      <h1>Welcome to the Student Dashboard! <div class="name"><?php echo "{$_SESSION['username']}!"; ?></div></h1>
-      <p>
-        • Conveniently access and manage your academic information.
-      </p>
-      <p>
-        • View your GPA and stay updated on your academic progress.
-      </p>
-      <p>
-        • Update your personal information and password easily.
-      </p>
-      <p>
-        • Keep your personal details accurate and secure.
-      </p>
-      <h2>Welcome to the Student Dashboard, your gateway to academic excellence!</h2>
-    </div>
-
+     <h1>Update my info</h1>
   </div>
 
 

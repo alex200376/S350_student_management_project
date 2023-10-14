@@ -9,29 +9,24 @@ $host = "localhost";
 $user = "root";
 $password = "";
 $db = "school";
+
 $data = mysqli_connect($host, $user, $password, $db);
 
-$sql = "SELECT * FROM user where usertype='teacher'";
+
+$username = $_SESSION['username'];
+
+
+$sql = "SELECT * FROM user WHERE username = '$username'";
 $result = mysqli_query($data, $sql);
 
-if ($_GET['teacher_id']) {
-    $t_id = $_GET['teacher_id'];
-    $sql2 = "DELETE FROM user WHERE id='$t_id'";
-    $result2 = mysqli_query($data, $sql2);
 
-    if ($result2) {
-        echo
-        header("Location:view_teacher.php");
-    }
-}
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>admin page</title>
+    <title>view my score</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -148,33 +143,29 @@ if ($_GET['teacher_id']) {
 
 <body>
     <header>
-        <a href="admin.php">admin dashboard</a>
-        <div class="logout">
-            <a href="index.php">logout</a>
-        </div>
-    </header>
-    <aside>
-        <ul>
-            <li><a href="add_student.php">add student</a></li>
-            <li><a href="view_student.php">view student</a></li>
-            <li><a href="add_teacher.php">add teacher</a></li>
-            <li><a href="view_teacher.php">view teacher</a></li>
-            <li><a href="add_course.php">add course</a></li>
-            <li><a href="view_course.php">view course</a></li>
+    <a href="student.php">student dashboard</a>
+    <div class="logout">
+      <a href="index.php">logout</a>
+    </div>
+  </header>
+  <aside>
+    <ul>
+      <li><a href="update_info.php">Update my info</a></li>
+      <li><a href="view_score.php">view my score</a></li>
             
         </ul>
     </aside>
     <div class="content">
         <center>
-            <h1>View teacher</h1>
+            <h1>View my score</h1>
             <table class="table">
                 <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Phone number</th>
-                    <th>Password</th>
-                    <th>Course</th>
-                    <th>Delete</th>
+                    <th>Course name</th>
+                    <th>Sem 1 gpa</th>
+                    <th>Sem 2 gpa</th>
+                    <th>Sem 3 gpa</th>
+                    <th>Sem 4 gpa</th>
+                    <th>Cgpa</th>
                 </tr>
                 <?php
                 while ($info = $result->fetch_assoc()) {
@@ -182,26 +173,22 @@ if ($_GET['teacher_id']) {
                 ?>
                     <tr>
                         <td>
-                            <?php echo "{$info['username']}"; ?>
-                        </td>
-                        <td>
-                            <?php echo "{$info['email']}"; ?>
-                        </td>
-                        <td>
-                            <?php echo "{$info['phone']}"; ?>
-                        </td>
-                        <td>
-                            <?php echo "{$info['password']}"; ?>
-                        </td>
-                        <td>
                             <?php echo "{$info['Course']}"; ?>
                         </td>
                         <td>
-                            <?php
-                            echo "
-                       <a onClick=\"javascript:return confirm('Are you sure to delete this?');\" href='view_teacher.php?teacher_id={$info['id']}' class='btn'>Delete</a>"
-
-                            ?>
+                            <?php echo "{$info['gpa1']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa2']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa3']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa4']}"; ?>
+                        </td>
+                        <td>
+                        <?php echo "{$info['cgpa']}"; ?>
                         </td>
                     </tr>
                 <?php

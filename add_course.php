@@ -15,42 +15,24 @@ $data = mysqli_connect($host, $user, $password, $db);
 $sql = "SELECT * FROM courses where id IS NOT NULL";
 $result = mysqli_query($data, $sql);
 
-if (isset($_POST['add_student'])) {
-    $username = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $password = $_POST['password'];
+if (isset($_POST['add_course'])) {
+    
     $Course = $_POST['course'];
-    $gpa1 = $_POST['gpa1'];
-    $gpa2 = $_POST['gpa2'];
-    $gpa3 = $_POST['gpa3'];
-    $gpa4 = $_POST['gpa4'];
+    $des=$_POST['des'];
+   
+    $check = "SELECT * FROM courses WHERE name ='$Course'";
 
-    if ($gpa4 == 0 and $gpa3 == 0 and $gpa2 == 0) {
-        $cgpa =  $gpa1;
-    } elseif ($gpa4 == 0 and $gpa3 == 0) {
-        $cgpa =  ($gpa1 + $gpa2) / 2;
-    } elseif ($gpa4 == 0) {
-        $cgpa =  ($gpa1 + $gpa2 + $gpa3) / 3;
-    } else {
-        $cgpa = ($gpa1 + $gpa2 + $gpa3 + $gpa4) / 4;
-    }
+    $check_course= mysqli_query($data, $check);
 
-    $usertype = "student";
-    $check = "SELECT * FROM user WHERE username ='$username'";
-
-    $check_user = mysqli_query($data, $check);
-
-    $row_count = mysqli_num_rows($check_user);
+    $row_count = mysqli_num_rows($check_course);
 
     if ($row_count == 1) {
         echo "<script>
-    alert('Username already exist. please try another one');
+    alert('course already exist. please try another one');
     </script>";
     } else {
 
-        $sql = "INSERT INTO user(username,email,phone,usertype,password,Course,gpa1,gpa2,gpa3,gpa4,cgpa) VALUES('$username',
-    '$email','$phone','$usertype','$password','$Course','$gpa1','$gpa2','$gpa3','$gpa4','$cgpa')";
+        $sql = "INSERT INTO courses(name,description) VALUES('$Course','$des')";
         $result = mysqli_query($data, $sql);
         if ($result) {
             echo "<script>
@@ -167,7 +149,7 @@ if (isset($_POST['add_student'])) {
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             width: 500px;
             padding: 15px;
-
+           
         }
 
         label {
@@ -177,13 +159,14 @@ if (isset($_POST['add_student'])) {
         .div_deg input[type="text"],
         .div_deg input[type="number"],
         .div_deg input[type="email"],
-        .div_deg input[type="password"] {
-            width: 50%;
+        .div_deg input[type="password"]
+         {
+            width:50%;
             padding: 5px;
             border: none;
             border-radius: 5px;
             margin-bottom: 10px;
-
+           
         }
 
         .div_deg input[type="text"]:focus,
@@ -194,7 +177,7 @@ if (isset($_POST['add_student'])) {
             box-shadow: 0 0 5px #3498db;
         }
 
-        .div_deg select {
+        .div_deg select{
             width: 50%;
             height: 40px;
             border-radius: 5px;
@@ -222,58 +205,22 @@ if (isset($_POST['add_student'])) {
     </aside>
     <center>
         <div class="content">
-            <h1>Add student</h1>
+            <h1>Add Courses</h1>
             <div class="div_deg">
                 <form action="#" method="POST">
                     <div>
-                        <label>Usernmae</label>
-                        <input type="text" name="name" required>
+                        <label>Course name</label>
+                        <input type="text" name="course" required>
                     </div>
                     <div>
-                        <label>Email</label>
-                        <input type="text" name="email" required>
+                        <label>Description</label>
+                        <input type="text" name="des" required>
                     </div>
-                    <div>
-                        <label>Phone</label>
-                        <input type="number" name="phone" max="99999999" required>
-                    </div>
-                    <div>
-                        <label>Password</label>
-                        <input type="text" name="password" required>
-                    </div>
-                    <div>
-                        <label>Course</label>
-
-
-                        <select name="course">
-                            <?php
-                            while ($course = mysqli_fetch_assoc($result)) {
-                                echo '<option value="' . $course['name'] . '">' . $course['name'] . '</option>';
-                            }
-                            ?>
-                        </select>
-
-                    </div>
-                    <div>
-                        <label>Sem 1 GPA</label>
-                        <input type="number" step="any" name="gpa1" value="0" max="4.4" required>
-                    </div>
-                    <div>
-                        <label>Sem 2 GPA</label>
-                        <input type="number" step="any" name="gpa2" value="0" max="4.4" required>
-                    </div>
-                    <div>
-                        <label>Sem 3 GPA</label>
-                        <input type="number" step="any" name="gpa3" value="0" max="4.4" required>
-                    </div>
-                    <div>
-                        <label>Sem 4 GPA</label>
-                        <input type="number" step="any" name="gpa4" value="0" max="4.4" required>
-                    </div>
+                    
 
                     <div>
 
-                        <input type="submit" class="btn" name="add_student" value="Add">
+                        <input type="submit" class="btn" name="add_course" value="Add">
                     </div>
 
             </div>
