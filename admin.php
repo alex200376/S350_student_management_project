@@ -62,6 +62,32 @@ if (!isset($_SESSION['username'])) {
       margin-left: 20%;
       margin-top: 5%;
     }
+
+    .dashboard-content {
+      background-color: white;
+      float: left;
+      padding: 10px;
+    }
+
+    .dashboard-content ul {
+      background-color: white;
+      white-space: nowrap;
+      display: inline-block;
+     
+    }
+
+    .dashboard-content li {
+      text-align: left;
+      font-size: 20px;
+      padding: 5px;
+      width: auto;
+      
+    }
+
+    h1 {
+      margin-top: -20px;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 
@@ -83,8 +109,21 @@ if (!isset($_SESSION['username'])) {
     </ul>
   </aside>
   <div class="content">
-    <h1>Hello</h1>
-
+    <div class="dashboard-content">
+      <h1>Welcome to the Admin Dashboard</h1>
+      <ul>
+        <li>Effortlessly manage your system with our intuitive admin dashboard.</li>
+        <li>Add and view teacher records:</li>
+        
+          <li>Track teacher details like name, contact information, and subject expertise.</li>
+        
+        <li>Manage student records:</li>
+        
+          <li>Keep track of student information, including name, <p>grade level, and contact details.</li>
+        
+        <li>Stay organized and ensure accurate data management for your educational institution.</li>
+      </ul>
+    </div>
   </div>
 
 
