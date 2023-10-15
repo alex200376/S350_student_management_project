@@ -175,6 +175,7 @@ if ($_GET['teacher_id']) {
                     <th>Password</th>
                     <th>Course</th>
                     <th>Delete</th>
+                    <th>Update</th>
                 </tr>
                 <?php
                 while ($info = $result->fetch_assoc()) {
@@ -200,6 +201,13 @@ if ($_GET['teacher_id']) {
                             <?php
                             echo "
                        <a onClick=\"javascript:return confirm('Are you sure to delete this?');\" href='view_teacher.php?teacher_id={$info['id']}' class='btn'>Delete</a>"
+
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo "
+                       <a href='update_t.php?teacher_id={$info['id']}'  class='btn'>Update</a>"
 
                             ?>
                         </td>

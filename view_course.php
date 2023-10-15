@@ -71,6 +71,7 @@ if ($_GET['course_id']) {
             background-color: skyblue;
             line-height: 75px;
             padding-left: 30px;
+           
         }
 
         a {
@@ -171,6 +172,8 @@ if ($_GET['course_id']) {
                 <tr>
                     <th>Course ID</th>
                     <th>Course name</th>
+                    <th>Course descrpition</th>
+                    
                     <th>Delete</th>
                 </tr>
                 <?php
@@ -183,6 +186,9 @@ if ($_GET['course_id']) {
                         </td>
                         <td>
                             <?php echo "{$info['name']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['description']}"; ?>
                         </td>
                         <td>
                             <?php

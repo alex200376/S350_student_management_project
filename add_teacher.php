@@ -218,7 +218,7 @@ if (isset($_POST['add_teacher'])) {
                     </div>
                     <div>
                         <label>Phone</label>
-                        <input type="number" name="phone" required>
+                        <input type="number" name="phone" max="99999999" required>
                     </div>
                     <div>
                         <label>Password</label>

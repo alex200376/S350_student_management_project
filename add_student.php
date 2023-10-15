@@ -27,15 +27,16 @@ if (isset($_POST['add_student'])) {
     $gpa4 = $_POST['gpa4'];
 
     if ($gpa4 == 0 and $gpa3 == 0 and $gpa2 == 0) {
-        $cgpa =  $gpa1;
+        $cgpa = $gpa1;
     } elseif ($gpa4 == 0 and $gpa3 == 0) {
-        $cgpa =  ($gpa1 + $gpa2) / 2;
+        $cgpa = ($gpa1 + $gpa2) / 2;
     } elseif ($gpa4 == 0) {
-        $cgpa =  ($gpa1 + $gpa2 + $gpa3) / 3;
+        $cgpa = ($gpa1 + $gpa2 + $gpa3) / 3;
     } else {
         $cgpa = ($gpa1 + $gpa2 + $gpa3 + $gpa4) / 4;
     }
 
+    $cgpa = number_format($cgpa, 3);
     $usertype = "student";
     $check = "SELECT * FROM user WHERE username ='$username'";
 
