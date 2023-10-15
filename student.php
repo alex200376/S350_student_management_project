@@ -24,7 +24,7 @@ $result = mysqli_query($data, $sql);
 <html lang="en">
 
 <head>
-  <title>student page</title>
+  <title><?php echo $username ?>'s page</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -102,7 +102,7 @@ $result = mysqli_query($data, $sql);
   </header>
   <aside>
     <ul>
-      <li><a href="update_info.php">Update my info</a></li>
+      <li><a href="view_myinfo.php">view my info</a></li>
       <li><a href="view_score.php">view my score</a></li>
 
   </aside>

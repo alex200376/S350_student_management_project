@@ -47,7 +47,7 @@ if ($_GET['student_id']) {
             font-family: Arial;
             font-size: 15px;
             font-weight: bold;
-            padding: 10px 31px;
+            padding: 10px 21px;
             text-decoration: none;
             border: none;
             margin-top: 10px;
@@ -173,8 +173,13 @@ if ($_GET['student_id']) {
                     <th>Phone number</th>
                     <th>Password</th>
                     <th>Course</th>
-                    <th>CGPA</th>
+                    <th>Sem 1 gpa</th>
+                    <th>Sem 2 gpa</th>
+                    <th>Sem 3 gpa</th>
+                    <th>Sem 4 gpa</th>
+                    <th>Cgpa</th>
                     <th>Delete</th>
+                    <th>Update</th>
                 </tr>
                 <?php
                 while ($info = $result->fetch_assoc()) {
@@ -197,12 +202,31 @@ if ($_GET['student_id']) {
                             <?php echo "{$info['Course']}"; ?>
                         </td>
                         <td>
+                            <?php echo "{$info['gpa1']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa2']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa3']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa4']}"; ?>
+                        </td>
+                        <td>
                             <?php echo "{$info['cgpa']}"; ?>
                         </td>
                         <td>
                             <?php
                             echo "
                        <a onClick=\"javascript:return confirm('Are you sure to delete this?');\" href='view_student.php?student_id={$info['id']}' class='btn'>Delete</a>"
+
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo "
+                       <a href='update.php?student_id={$info['id']}'  class='btn'>Update</a>"
 
                             ?>
                         </td>

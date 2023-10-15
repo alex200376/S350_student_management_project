@@ -5,8 +5,9 @@
     <title>login page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
-        body{
+        body {
             background-image: url('21421.jpg');
             background-size: cover;
         }
@@ -52,6 +53,53 @@
         .form_deg input[type="submit"]:hover {
             background-color: #42ee4b;
         }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+            overflow: hidden;
+            background: #37517e;
+            transition: opacity 0.5s ease;
+        }
+
+        #preloader:before {
+            content: "";
+            position: fixed;
+            top: calc(50% - 30px);
+            left: calc(50% - 30px);
+            border: 6px solid #37517e;
+            border-top-color: #fff;
+            border-bottom-color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            -webkit-animation: animate-preloader 1s linear infinite;
+            animation: animate-preloader 1s linear infinite;
+        }
+
+        @-webkit-keyframes animate-preloader {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes animate-preloader {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -80,7 +128,7 @@
                     echo $_SESSION['loginMessage'];
                     ?>
                 </h4>
-            
+
 
             </form>
         </div>
@@ -88,13 +136,25 @@
 
 
 
-    <!-- Footer -->
-    <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+    <div id="preloader"></div>
 
-    </footer>
 
 
 
 </body>
+<script>
+   document.addEventListener('DOMContentLoaded', () => {
+    let preloader = document.querySelector('#preloader');
+    if (preloader) {
+      setTimeout(() => {
+        preloader.style.opacity = '0'; 
+        setTimeout(() => {
+          preloader.remove();
+        }, 500); 
+      }, 1500); 
+    }
+  });
+</script>
+
 
 </html>

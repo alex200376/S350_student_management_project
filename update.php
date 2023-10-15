@@ -14,6 +14,8 @@ $password = "";
 $db = "school";
 $data = mysqli_connect($host, $user, $password, $db);
 
+$sql2 = "SELECT * FROM courses WHERE id IS NOT NULL";
+$result2 = mysqli_query($data, $sql2);
 
 $id = $_GET['student_id'];
 
@@ -22,19 +24,33 @@ $result = mysqli_query($data, $sql);
 $info = $result->fetch_assoc();
 
 if (isset($_POST['update'])) {
-   
+    $username = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
-  
+    $Course = $_POST['course'];
+    $gpa1 = $_POST['gpa1'];
+    $gpa2 = $_POST['gpa2'];
+    $gpa3 = $_POST['gpa3'];
+    $gpa4 = $_POST['gpa4'];
 
-    $query = "UPDATE user SET  email = '$email', password = '$password', phone = '$phone'
-    WHERE id = '$id' ";
+    if ($gpa4 == 0 && $gpa3 == 0 && $gpa2 == 0) {
+        $cgpa = $gpa1;
+    } elseif ($gpa4 == 0 && $gpa3 == 0) {
+        $cgpa = ($gpa1 + $gpa2) / 2;
+    } elseif ($gpa4 == 0) {
+        $cgpa = ($gpa1 + $gpa2 + $gpa3) / 3;
+    } else {
+        $cgpa = ($gpa1 + $gpa2 + $gpa3 + $gpa4) / 4;
+    }
 
-    $result2 = mysqli_query($data, $query);
+    $query = "UPDATE user SET username = '$username', email = '$email', password = '$password', phone = '$phone',
+    Course = '$Course', gpa1 = '$gpa1', gpa2 = '$gpa2', gpa3 = '$gpa3', gpa4 = '$gpa4', cgpa='$cgpa' WHERE id = '$id' ";
 
-    if ($result2) {
-      header("location:view_myinfo.php");
+    $result3 = mysqli_query($data, $query);
+
+    if ($result3) {
+      header("location:view_student.php");
     } 
 }
 ?>
@@ -43,7 +59,7 @@ if (isset($_POST['update'])) {
 <html lang="en">
 
 <head>
-    <title>student page</title>
+    <title>admin page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -205,23 +221,32 @@ if (isset($_POST['update'])) {
 
 <body>
     <header>
-        <a href="student.php">student dashboard</a>
+        <a href="admin.php">admin dashboard</a>
         <div class="logout">
             <a href="index.php">logout</a>
         </div>
     </header>
     <aside>
         <ul>
-        <li><a href="view_myinfo.php">view my info</a></li>
-      <li><a href="view_score.php">view my score</a></li>
+            <li><a href="add_student.php">add student</a></li>
+            <li><a href="view_student.php">view student</a></li>
+            <li><a href="add_teacher.php">add teacher</a></li>
+            <li><a href="view_teacher.php">view teacher</a></li>
+            <li><a href="add_course.php">add course</a></li>
+            <li><a href="view_course.php">view course</a></li>
         </ul>
     </aside>
     <div class="content">
         <center>
-            <h1>Update my info</h1>
+            <h1>Update Student records</h1>
             <div class="div_deg">
                 <form action="#" method="POST">
                     <div>
+                        <div>
+                            <label>Username</label>
+                            <input type="text" name="name" value="<?php 
+                            echo "{$info['username']}"; ?>">
+                        </div>
                         <div>
                             <label>email</label>
                             <input type="email" name="email" value="<?php 
@@ -237,11 +262,43 @@ if (isset($_POST['update'])) {
                             <input type="text" name="password" value="<?php 
                             echo "{$info['password']}"; ?>">
                         </div>
-        
+                        <div>
+                        <div style="font-weight: 900;padding-top:10px;">previous course:<?php echo "{$info['Course']}"; ?></div>
+                        <label>Course</label>
 
+                        
+                        <select name="course">
+                            <?php
+                            while ($course = mysqli_fetch_assoc($result2)) {
+                                echo '<option value="' . $course['name'] . '">' . $course['name'] . '</option>';
+                            }
+                            ?>
+                        </select>
+
+                    </div>
+                        <div>
+                            <label>Sem 1 gpa</label>
+                            <input type="number" step="any" max="4.4"  name="gpa1" value="<?php 
+                            echo "{$info['gpa1']}"; ?>">
+                        </div>
+                        <div>
+                            <label>Sem 2 gpa</label>
+                            <input type="number" step="any" max="4.4"  name="gpa2" value="<?php 
+                            echo "{$info['gpa2']}"; ?>">
+                        </div>
+                        <div>
+                            <label>Sem 3 gpa</label>
+                            <input type="number" step="any" max="4.4"  name="gpa3" value="<?php 
+                            echo "{$info['gpa3']}"; ?>">
+                        </div>
+                        <div>
+                            <label>Sem 4 gpa</label>
+                            <input type="number" step="any" max="4.4" name="gpa4" value="<?php 
+                            echo "{$info['gpa4']}"; ?>">
+                        </div>
 
                         <div>
-                            <input type="submit" class="btn" name="update" value="update">
+                            <input type="submit" name="update" value="update">
                         </div>
 
 
