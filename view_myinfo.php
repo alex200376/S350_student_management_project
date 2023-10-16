@@ -143,7 +143,7 @@ $result = mysqli_query($data, $sql);
 
 <body>
     <header>
-        <a href="teacher.php">Teacher dashboard</a>
+        <a href="student.php">Student dashboard</a>
         <div class="logout">
             <a href="index.php">logout</a>
         </div>
@@ -151,7 +151,7 @@ $result = mysqli_query($data, $sql);
     <aside>
         <ul>
         <li><a href="view_myinfo.php">view my info</a></li>
-      <li><a href="tview_student.php">view my students</a></li>
+        <li><a href="view_score.php">view my score</a></li>
         </ul>
     </aside>
     <div class="content">

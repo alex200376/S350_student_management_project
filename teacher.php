@@ -78,8 +78,8 @@ if (!isset($_SESSION['username'])) {
   </header>
   <aside>
     <ul>
-    <li><a href="show_info.php">view my info</a></li>
-      <li><a href="tview_student.php">view students</a></li>
+    <li><a href="show_myinfo.php">view my info</a></li>
+    <li><a href="view_score.php">view my score</a></li>
 
   </aside>
   <div class="content">
