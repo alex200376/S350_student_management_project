@@ -24,11 +24,6 @@ $result = mysqli_query($data, $sql);
 $info = $result->fetch_assoc();
 
 if (isset($_POST['update'])) {
-    $username = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $password = $_POST['password'];
-    $Course = $_POST['course'];
     $gpa1 = $_POST['gpa1'];
     $gpa2 = $_POST['gpa2'];
     $gpa3 = $_POST['gpa3'];
@@ -44,13 +39,12 @@ if (isset($_POST['update'])) {
         $cgpa = ($gpa1 + $gpa2 + $gpa3 + $gpa4) / 4;
     }
 
-    $query = "UPDATE user SET username = '$username', email = '$email', password = '$password', phone = '$phone',
-    Course = '$Course', gpa1 = '$gpa1', gpa2 = '$gpa2', gpa3 = '$gpa3', gpa4 = '$gpa4', cgpa='$cgpa' WHERE id = '$id' ";
+    $query = "UPDATE user SET  gpa1 = '$gpa1', gpa2 = '$gpa2', gpa3 = '$gpa3', gpa4 = '$gpa4', cgpa='$cgpa' WHERE id = '$id' ";
 
     $result3 = mysqli_query($data, $query);
 
     if ($result3) {
-        header("location:view_student.php");
+        header("location:tview_student.php");
     }
 }
 ?>
@@ -238,7 +232,6 @@ if (isset($_POST['update'])) {
             <h1>Update Student score</h1>
             <div class="div_deg">
                 <form action="#" method="POST">
-
                     <div>
                         <label>Sem 1 gpa</label>
                         <input type="number" step="any" max="4.4" name="gpa1" value="<?php

@@ -11,7 +11,14 @@ $password = "";
 $db = "school";
 $data = mysqli_connect($host, $user, $password, $db);
 
-$Course = $_SESSION(Course);
+$username=$_SESSION['username'];
+$sql2 = "SELECT Course FROM user WHERE usertype='teacher' AND username='$username'";
+$result2 = mysqli_query($data, $sql2);
+
+if ($result2 && mysqli_num_rows($result2) > 0) {
+    $row = mysqli_fetch_assoc($result2);
+    $Course = $row['Course'];
+};
 
 $sql = "SELECT * FROM user where usertype='student' and Course='$Course'";
 $result = mysqli_query($data, $sql);
@@ -199,7 +206,8 @@ $result = mysqli_query($data, $sql);
                             <?php echo "{$info['gpa4']}"; ?>
                         </td>
                         <td>
-                            <?php echo "{$info['cgpa']}"; ?>
+                            <?php $formattedCgpa = number_format($info['cgpa'], 2);
+                            echo $formattedCgpa ?>
                         </td>
 
                         <td>

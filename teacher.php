@@ -4,7 +4,9 @@ session_start();
 if (!isset($_SESSION['username'])) {
   header("Location:index.php");
 }
-$Course = $_SESSION['Course'];
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

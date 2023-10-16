@@ -151,7 +151,7 @@ $result = mysqli_query($data, $sql);
     <aside>
         <ul>
         <li><a href="view_myinfo.php">view my info</a></li>
-      <li><a href="">view my students</a></li>
+      <li><a href="tview_student.php">view my students</a></li>
         </ul>
     </aside>
     <div class="content">

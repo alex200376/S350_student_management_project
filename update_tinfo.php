@@ -24,20 +24,19 @@ $result = mysqli_query($data, $sql);
 $info = $result->fetch_assoc();
 
 if (isset($_POST['update'])) {
-    $username = $_POST['name'];
+
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
-    $Course = $_POST['course'];
     
 
-    $query = "UPDATE user SET username = '$username', email = '$email', password = '$password', phone = '$phone',
-    Course = '$Course' WHERE id = '$id' ";
+    $query = "UPDATE user SET  email = '$email', password = '$password', phone = '$phone'
+   WHERE id = '$id' ";
 
     $result3 = mysqli_query($data, $query);
 
     if ($result3) {
-      header("location:view_teacher.php");
+      header("location:show_info.php");
     } 
 }
 ?>
@@ -46,7 +45,7 @@ if (isset($_POST['update'])) {
 <html lang="en">
 
 <head>
-    <title>admin page</title>
+    <title>Teacher page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
