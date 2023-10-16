@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
   header("Location:index.php");
 }
+$Course = $_SESSION['Course'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,30 +58,36 @@ if (!isset($_SESSION['username'])) {
       position: fixed;
 
     }
-    .content{
-      margin-left:20%;
+
+    .content {
+      margin-left: 20%;
       margin-top: 5%;
+      font-size: 150%;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <a href="teacher.php">teacher dashboard</a>
+    <a href="teacher.php">Teacher dashboard</a>
     <div class="logout">
       <a href="index.php">logout</a>
     </div>
   </header>
   <aside>
     <ul>
-      <li><a href="">add student</a></li>
-      <li><a href="">view student</a></li>
- 
-  </aside>
-     <div class="content">
-        <h1>Hello</h1>
+    <li><a href="show_info.php">view my info</a></li>
+      <li><a href="tview_student.php">view students</a></li>
 
-     </div>
+  </aside>
+  <div class="content">
+    <div>
+      <h1>Welcome to the Teacher Dashboard!</h1>
+      <p>-In this digital realm, you'll discover a world where adorable dogs play a vital role in education.</p>
+      <p>-Get ready to embark on a <strong>pawsome</strong> journey of knowledge and growth.</p>
+    </div>
+
+  </div>
 
 
 

@@ -150,19 +150,20 @@ $result = mysqli_query($data, $sql);
     </header>
     <aside>
         <ul>
-        <li><a href="view_myinfo.php">view my info</a></li>
-      <li><a href="">view my students</a></li>
+        <li><a href="show_info.php">view my info</a></li>
+      <li><a href="tview_student.php">view students</a></li>
         </ul>
     </aside>
     <div class="content">
         <center>
-            <h1>Student records</h1>
+            <h1>Teacher's info</h1>
             <table class="table">
                 <tr>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Phone number</th>
                     <th>Password</th>
+                    <th>Course</th>
                 
                     <th>Update</th>
                 </tr>
@@ -184,9 +185,12 @@ $result = mysqli_query($data, $sql);
                             <?php echo "{$info['password']}"; ?>
                         </td>
                         <td>
+                            <?php echo "{$info['Course']}"; ?>
+                        </td>
+                        <td>
                             <?php
                             echo "
-                       <a href='update_info.php?student_id={$info['id']}'  class='btn'>Update</a>"
+                       <a href='update_tinfo.php?teacher_id={$info['id']}'  class='btn'>Update</a>"
 
                             ?>
                         </td>

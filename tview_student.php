@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+
 if (!isset($_SESSION['username'])) {
     header("Location:index.php");
 }
@@ -11,14 +11,10 @@ $password = "";
 $db = "school";
 $data = mysqli_connect($host, $user, $password, $db);
 
-$username = $_SESSION['username'];
+$Course = $_SESSION(Course);
 
-
-$sql = "SELECT * FROM user WHERE username = '$username'";
+$sql = "SELECT * FROM user where usertype='student' and Course='$Course'";
 $result = mysqli_query($data, $sql);
-
-
-
 
 ?>
 
@@ -27,7 +23,7 @@ $result = mysqli_query($data, $sql);
 <html lang="en">
 
 <head>
-    <title><?php echo $username ?>'s info page</title>
+    <title>Teacher page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -150,8 +146,8 @@ $result = mysqli_query($data, $sql);
     </header>
     <aside>
         <ul>
-        <li><a href="view_myinfo.php">view my info</a></li>
-      <li><a href="">view my students</a></li>
+        <li><a href="show_info.php">view my info</a></li>
+      <li><a href="tview_student.php">view students</a></li>
         </ul>
     </aside>
     <div class="content">
@@ -162,31 +158,54 @@ $result = mysqli_query($data, $sql);
                     <th>Username</th>
                     <th>Email</th>
                     <th>Phone number</th>
-                    <th>Password</th>
-                
+                    <th>Course</th>
+                    <th>Sem 1 gpa</th>
+                    <th>Sem 2 gpa</th>
+                    <th>Sem 3 gpa</th>
+                    <th>Sem 4 gpa</th>
+                    <th>Cgpa</th>
+        
                     <th>Update</th>
                 </tr>
                 <?php
-                while ($info = $result->fetch_assoc()) {
+                while ($info =  mysqli_fetch_assoc($result)) {
 
                 ?>
                     <tr>
                         <td>
                             <?php echo "{$info['username']}"; ?>
                         </td>
+                        
                         <td>
                             <?php echo "{$info['email']}"; ?>
                         </td>
                         <td>
                             <?php echo "{$info['phone']}"; ?>
                         </td>
+
                         <td>
-                            <?php echo "{$info['password']}"; ?>
+                            <?php echo "{$info['Course']}"; ?>
                         </td>
+                        <td>
+                            <?php echo "{$info['gpa1']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa2']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa3']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['gpa4']}"; ?>
+                        </td>
+                        <td>
+                            <?php echo "{$info['cgpa']}"; ?>
+                        </td>
+
                         <td>
                             <?php
                             echo "
-                       <a href='update_info.php?student_id={$info['id']}'  class='btn'>Update</a>"
+                       <a href='update_score.php?student_id={$info['id']}'  class='btn'>Update</a>"
 
                             ?>
                         </td>
