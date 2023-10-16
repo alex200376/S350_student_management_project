@@ -90,13 +90,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `phone`, `email`, `usertype`, `password`, `Course`, `gpa1`, `gpa2`, `gpa3`, `gpa4`, `cgpa`) VALUES
 (1, 'admin', 12341234, 'admin@gmail.com', 'admin', 'admin', NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 'teacher', 4353453, 'teacher@gmail.com', 'teacher', '1234', 'Web Development', NULL, NULL, NULL, NULL, NULL),
-(15, 'viper', 545435435, 'CStation@gmail.com', 'teacher', '1234', 'AI engineer', NULL, NULL, NULL, NULL, NULL),
-(17, 'Yorihime', 32143232, 'anthorytsang@gmail.com', 'teacher', '3213', 'Physics: Principles and Applications', NULL, NULL, NULL, NULL, NULL),
-(20, 'student', 43432422, 'student@gmail.com', 'student', '1234', 'Web Development', 3.4, 3.1, 4.2, 3.44, 3.535),
-(23, 'makima', 21312312, 'xdxd@gmail.com', 'student', '1234', 'Web Development', 3.4, 3.2, 0, 0, 3.3),
-(24, 'alex', 44444444, '123123@gmail.com', 'student', 'alex200376', 'Web Development', 3.2, 2.1, 3.2, 1.5, 2.5),
-(26, 'bobo', 34232123, 'bobo@gmial.com', 'student', '1234', 'Web Development', 4.2, 2.7, 3.2, 0, 3.3666666666667);
+(2, 'teacher', 4353453, 'teacher@gmail.com', 'teacher', '1234', 'Web Development', NULL, NULL, NULL, NULL, NULL),
+(3, 'student', 43432422, 'student@gmail.com', 'student', '1234', 'Web Development', 3.4, 3.1, 4.2, 3.44, 3.535),
+
 
 --
 -- 已傾印資料表的索引
