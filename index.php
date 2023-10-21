@@ -15,7 +15,7 @@
         .form_deg {
             -webkit-box-shadow: 5px 4px 8px 5px rgba(0, 0, 0, 0.58);
             box-shadow: 5px 4px 8px 5px rgba(0, 0, 0, 0.58);
-            margin-top: 200px;
+            margin-top: 150px;
             padding: 20px;
             background-color: #ffffff;
             max-width: 400px;
@@ -100,12 +100,19 @@
                 transform: rotate(360deg);
             }
         }
+
+        .schoolname {
+            font-size: 30px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 800;
+            margin-top: 50px;
+        }
     </style>
 </head>
 
 <body>
     <center>
-
+        <header class="schoolname">The School of Science and Technology</header>
         <div class="form_deg">
             <form action="login_check.php" method="POST">
                 <h1>Login</h1>
